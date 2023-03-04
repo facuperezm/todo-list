@@ -1,4 +1,4 @@
-import React, { SetStateAction } from "react";
+import React from "react";
 import {
   addDoc,
   collection,
@@ -81,7 +81,7 @@ const App = () => {
       <div>
         <ul>
           {todos.map((todo, index) => (
-            <li>
+            <li key={index}>
               <div>
                 <input
                   onChange={() => toggleComplete(todo)}
