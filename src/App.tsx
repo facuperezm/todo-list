@@ -9,6 +9,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { db } from "./firebase";
+import TodoComponent from "./components/Todo";
 
 interface Todo {
   id: string;
@@ -65,33 +66,33 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Todo List</h1>
-      <div>
-        <form onSubmit={createTodo}>
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            type="text"
-            placeholder="Add Todo"
-          />
-          <button>Add Todo</button>
+    <div className="bg-slate-100 h-screen flex flex-col justify-center items-center">
+      <h1 className="font-bold text-5xl uppercase text-gray-800 font-mono">
+        Todo List
+      </h1>
+      <div className="my-4 p-2]">
+        <form onSubmit={createTodo} className="space-x-1">
+          <div className="flex border-b-2">
+            <input
+              className="border-none focus:ring-0 bg-slate-100 placeholder:text-gray-400"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              type="text"
+              placeholder="I need to do..."
+            />
+            <button className="">Add Todo</button>
+          </div>
         </form>
       </div>
       <div>
-        <ul>
+        <ul className="">
           {todos.map((todo, index) => (
-            <li key={index}>
-              <div>
-                <input
-                  onChange={() => toggleComplete(todo)}
-                  type="checkbox"
-                  checked={todo.completed}
-                />
-                <p onClick={() => toggleComplete(todo)}>{todo.text}</p>
-              </div>
-              <button onClick={() => deleteTodo(todo.id)}>Delete Todo</button>
-            </li>
+            <TodoComponent
+              key={index}
+              todo={todo}
+              toggleComplete={toggleComplete}
+              deleteTodo={deleteTodo}
+            />
           ))}
         </ul>
       </div>
