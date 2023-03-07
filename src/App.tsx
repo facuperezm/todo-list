@@ -67,25 +67,25 @@ const App = () => {
 
   return (
     <div className="bg-slate-100 h-screen flex flex-col justify-center items-center">
-      <h1 className="font-bold text-5xl uppercase text-gray-800 font-mono">
+      <h1 className="font-bold text-5xl uppercase text-gray-800 font-mono mb-8">
         Todo List
       </h1>
-      <div className="my-4 p-2]">
-        <form onSubmit={createTodo} className="space-x-1">
-          <div className="flex border-b-2">
+      <div className="w-full max-w-md mx-auto">
+        <form onSubmit={createTodo} className="mb-4">
+          <div className="flex items-center border-b-2">
             <input
-              className="border-none focus:ring-0 bg-slate-100 placeholder:text-gray-400"
+              className="w-full py-2 mr-3 leading-tight bg-transparent border-none focus:outline-none"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               type="text"
               placeholder="I need to do..."
             />
-            <button className="">Add Todo</button>
+            <button className="px-1 py- font-semibold text-white bg-green-500 rounded hover:bg-green-600 focus:outline-none">
+              Add Todo
+            </button>
           </div>
         </form>
-      </div>
-      <div>
-        <ul className="">
+        <ul>
           {todos.map((todo, index) => (
             <TodoComponent
               key={index}
